@@ -12,6 +12,9 @@ crash.log
 # Ignore .terraform directory (plugins, modules, etc.)
 .terraform/
 
+# Ignore Terraform lock file for reusable modules
+.terraform.lock.hcl
+
 # Ignore plan output files
 *.tfplan
 
@@ -30,4 +33,3 @@ terraform.rc
 
 # macOS system files (optional)
 .DS_Store
-
