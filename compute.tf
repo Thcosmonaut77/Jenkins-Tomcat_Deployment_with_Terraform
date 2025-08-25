@@ -30,7 +30,7 @@ data "aws_ami" "ubuntu" {
 # Create the EC2 instance and assign key pair
 resource "aws_instance" "jenkins" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = var.instance_type
+  instance_type          = var.instance_type2
   vpc_security_group_ids = [aws_security_group.allow_web.id]
   subnet_id              = aws_subnet.subnet.id
   key_name               = var.kp

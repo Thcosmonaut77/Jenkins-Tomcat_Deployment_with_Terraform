@@ -80,3 +80,8 @@ variable "gui_password" {
   type        = string
   sensitive   = true
 }
+
+variable "instance_type2" {
+  description = "jenkins instance type"
+  type = string
+}
