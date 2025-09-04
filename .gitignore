@@ -33,3 +33,5 @@ terraform.rc
 
 # macOS system files (optional)
 .DS_Store
+.gitignore
+desktop.ini
