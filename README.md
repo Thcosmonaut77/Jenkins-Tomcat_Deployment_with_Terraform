@@ -11,25 +11,20 @@ This project provisions a custom AWS networking environment with Jenkins and Tom
 
 ## Features
 
-• Infrastructure as Code (IaC) with Terraform
+- **Infrastructure as Code (IaC)** with Terraform  
+  - Custom VPC, subnets, and security groups  
+  - EC2 instances for Jenkins (CI/CD) and Tomcat (App hosting)  
 
-   • Custom VPC, subnets, and security groups
+- **CI/CD Pipeline**  
+  - Jenkinsfile defines build & deploy stages  
+  - Maven builds the app into a `.war` file  
+  - Artifact deployed automatically to Tomcat server  
 
-   • EC2 instances for Jenkins (CI/CD) and Tomcat (App hosting)
-
-• CI/CD Pipeline
-
-   • Jenkinsfile defines build & deploy stages
-
-   • Maven builds the app into a .war file
-
-   • Artifact deployed automatically to Tomcat server
-
-• Sample WebApp
-
-   • Simple Java WAR application to demonstrate pipeline execution
+- **Sample WebApp**  
+  - Simple Java WAR application to demonstrate pipeline execution
 
 ## Repository Structure
+```bash
 .
 ├── Scripts/               # Bootstrap scripts for Jenkins & Tomcat setup
 ├── compute.tf             # EC2 definitions (Jenkins & Tomcat servers)
@@ -39,6 +34,7 @@ This project provisions a custom AWS networking environment with Jenkins and Tom
 ├── variables.tf           # Input variables (no hardcoding)
 ├── Jenkinsfile            # CI/CD pipeline for Jenkins
 └── SampleWebApp/          # Java WAR app for deployment demo
+```
 
 ## Architecture Overview
 
@@ -68,21 +64,17 @@ terraform apply --auto-approve
 ```
  This creates networking, Jenkins server, and Tomcat server.
 
-• Access Jenkins
+### Access Jenkins
+- URL: http://`<jenkins-public-ip>`:8080  
+- Unlock Jenkins with the initial admin password (`/var/lib/jenkins/secrets/initialAdminPassword`) 
 
-   • Jenkins runs on http://<jenkins-public-ip>:8080
+### Run Pipeline
+- Defined in `Jenkinsfile`  
+- Builds SampleWebApp → packages as `.war` → deploys to Tomcat
 
-   • Unlock Jenkins with initial admin password (password resides in /var/lib/jenkins/secrets/initialAdminPassword).
+### Access Application
+- Visit: http://`<tomcat-public-ip>`:8080/`<your-app-name>`
 
-• Run Pipeline
-
-   • Pipeline defined in Jenkinsfile
-
-   • Builds SampleWebApp → packages as .war → deploys to Tomcat
-
-• Access Application
-
-   • Visit http://<tomcat-public-ip>:8080/<your-app-name>
 
 ## License
 
