@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Test stage 1') {
+        stage('Test') {
             steps {
                 sh 'cd SampleWebApp mvn test'
             }
         }
-        stage('Compile the Java Code stage 2') {
+        stage('Build') {
             steps {
                 sh 'cd SampleWebApp && mvn clean package'
             }
